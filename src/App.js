@@ -48,7 +48,7 @@ const App = () => {
   return (
     <>
     <Nav />
-   <WrapperContainer employeeData={employee} />
+   <WrapperContainer employeeData={employee}  setEmployee={setEmployee}/>
     </>
   )
 }
