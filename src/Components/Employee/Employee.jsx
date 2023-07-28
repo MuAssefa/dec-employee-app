@@ -11,7 +11,7 @@ padding:"1rem",
 
 function Employee(props) {
   return <div style={StyleEmployee}>
-    <HomePage employeeData={props.employeeData} />
+    <HomePage employeesData={props.employeesData}/>
   </div>
   
 }

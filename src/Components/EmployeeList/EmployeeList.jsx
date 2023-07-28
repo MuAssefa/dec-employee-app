@@ -1,9 +1,9 @@
 import React from 'react'
 import EmployeeListItem from '../EmployeeListItem/EmployeeListItem'
 
-function EmployeeList(props) {
-  return <EmployeeListItem employeeData={props.employeeData} />
+function EmployeeList() {
+  return <EmployeeListItem  />
 }
 
-export default EmployeeList
+export default EmployeeList;
    

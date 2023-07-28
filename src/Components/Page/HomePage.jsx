@@ -1,8 +1,7 @@
 import React from "react";
 import Home from "../Home/Home";
 
-function HomePage(props) {
-  console.log("props", props);
+function HomePage() {
   return <Home />;
 }
 

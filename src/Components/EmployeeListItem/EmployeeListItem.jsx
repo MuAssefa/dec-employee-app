@@ -1,37 +1,41 @@
-import React from 'react'
+import React,{useContext} from 'react';
+import {EmployeeContext} from '../../EmployeeContext'
+import styled from 'styled-components';
+import Paper from '@mui/material/Paper';
 
-function EmployeeListItem(props) {
+
+function EmployeeListItem() {
+  const { employees,color } = useContext(EmployeeContext);
   return (
-   <>
-   {
-props.employeeData.map((employee,index) =>{
-    return(
-        <div style={StyledEmployeeListItem} key={index}>
-        <img style={StyledImage}src={employee.image} alt="person"/>
-        <div>
-        <h4>{employee.name}</h4>
-        <p>{employee.occupation}</p>
-        </div>
-        </div>
+       <React.Fragment>
+         {employees.map(({image, name, occupation}, index) =>{
+           return(
+        
+            <StyledEmployeeListItem   key={index} elevation='6'>
+             <img style={StyledImage}src={image} alt="person"/>
+              <div>
+              <h4 style={{color: color}}>{name}</h4>
+               <p>{occupation}</p>
+               </div>
+               </StyledEmployeeListItem>
     );
 })}
-   </>
+
+   </React.Fragment>
   );
 }
-const StyledEmployeeListItem = {
-display:"flex",
-alignItem:"center",
-gap:"10px",
-padding:"0.6rem",
-width:"50%",
-backgroundColor:"#fff",
-marginBottom:"0.6rem",
-boxShadow:"0px 2px 4px rgba(0,0,0,0.26)",
-}
+const StyledEmployeeListItem = styled(Paper) `
+         display:flex;
+         align-items: center;
+         gap:10px;
+         padding:0.5rem;
+         width:50%;
+         margin-bottom:0.5rem;
+     `
 const StyledImage = {
-width:"50px",
-height:"50px",
-borderRadius:"50px",
+    width:"50px",
+   height:"50px",
+   borderRadius:"50px",
 }
 
 export default EmployeeListItem;
