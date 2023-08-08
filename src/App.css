@@ -1,0 +1,26 @@
+
+label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+input,
+textarea {
+  width: 40%;
+  padding: 8px;
+  border: 2px solid #cccccc;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+button[type='submit'] {
+  background-color: #4caf50;
+  margin-right: 10px;
+}
+
+img {
+  max-width: 100px;
+  display: block;
+  margin-top: 10px;
+}
+ 

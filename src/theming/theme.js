@@ -1,4 +1,4 @@
 export const theme = {
-     primaryColor: "#8BC34A",
-     secondaryColor: "#673AB7",
+  primaryColor: "#009688",
+  secondaryColor: "#607D8B",
 };

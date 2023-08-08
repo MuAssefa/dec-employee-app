@@ -27,7 +27,7 @@ import {
     }
     `
 const drawerWidth = 240;
-// const navItems = ['Home', 'Add Employee', 'Employee List','Logout'];
+
 const navItems = [
   {
     key:"Home",

@@ -1,4 +1,5 @@
 import  {useState,createContext } from "react";
+// import AddEmployee from "./Components/AddEmployee/AddEmployee";
 
 // Create the context
  export const EmployeeContext =  createContext();
@@ -44,6 +45,18 @@ const employeesData = [
       sms: "3795839859389",
       email: "drake@email.com",
     },
+
+    {
+      name: "Muluken Assefa",
+      occupation: "FS developer",
+      image:
+        " https://media.licdn.com/dms/image/D4E03AQHHINTR8FCg-A/profile-displayphoto-shrink_800_800/0/1689619777593?e=1696464000&v=beta&t=ttMKTuvfdJNSxQRctCDkRAQii4aZ0UVfctuRo7988WM",
+      callOffice: "2029102553",
+      callMobile: "2404784793",
+      sms: "2029102553",
+      email: "fsdeveloper@gmail.com",
+    },
+
   ];
 
 // Create a provider component

@@ -8,7 +8,7 @@ function EmployeeListItem() {
   const { employees,color } = useContext(EmployeeContext);
   return (
        <React.Fragment>
-         {employees.map(({image, name, occupation}, index) =>{
+         {employees.map(({image, name, occupation, cellOffice, cellMobile, sms, email}, index) =>{
            return(
         
             <StyledEmployeeListItem   key={index} elevation='6'>
@@ -16,6 +16,10 @@ function EmployeeListItem() {
               <div>
               <h4 style={{color: color}}>{name}</h4>
                <p>{occupation}</p>
+               <p>{cellOffice}</p>
+               <p>{cellMobile}</p>
+               <p>{sms}</p>
+               <p>{email}</p>
                </div>
                </StyledEmployeeListItem>
     );

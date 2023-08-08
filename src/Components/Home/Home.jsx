@@ -2,7 +2,7 @@
 // import { EmployeeContext } from "../../EmployeeContext";
 import styled  from "styled-components";
 import {Typography,Button} from '@mui/material';
-
+import { Link } from "react-router-dom";
 
 const Header = styled.h1`
   font-size: 1.5em;
@@ -47,7 +47,9 @@ function Home() {
     </Typography>
 
       <StyledButtonGroup>
+      <Link to="/login">
       <StyledButton variant="contained">Login</StyledButton>
+      </Link>
       <StyledButton variant="outlined">Register</StyledButton>
       </StyledButtonGroup>
     </div>
