@@ -2,7 +2,7 @@ import  { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmployeeContext } from '../../EmployeeContext';
 
-const AddEmployee = () => {
+  const AddEmployee = () => {
   const { employees, setEmployees } = useContext(EmployeeContext);
   const [employee, setEmployee] = useState({
     name: '',
@@ -27,8 +27,7 @@ const AddEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const newEmployee = { ...employee, id: Date.now() };
-    // console.log()
+    
     setEmployees( [...employees, employee]) ;
     setEmployee({
       name: '', occupation: '', email: '', password: '', address: '', phone: '', salary: '',

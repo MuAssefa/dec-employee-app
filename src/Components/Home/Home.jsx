@@ -4,17 +4,17 @@ import styled  from "styled-components";
 import {Typography,Button} from '@mui/material';
 import { Link } from "react-router-dom";
 
-const Header = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: #BF4F74;
-`;
-const HeaderParagraph = styled.p`
-   text-align:center;
-   line-height:2;
-   color:#000;
-   padding:0rem 5rem;
-`;
+// const Header = styled.h1`
+//   font-size: 1.5em;
+//   text-align: center;
+//   color: #BF4F74;
+// `;
+// const HeaderParagraph = styled.p`
+//    text-align:center;
+//    line-height:2;
+//    color:#000;
+//    padding:0rem 5rem;
+// `;
 const StyledButton = styled(Button)`
      margin: 0rem 1rem !important ;
      
@@ -50,7 +50,9 @@ function Home() {
       <Link to="/login">
       <StyledButton variant="contained">Login</StyledButton>
       </Link>
+      <Link to="/register">
       <StyledButton variant="outlined">Register</StyledButton>
+      </Link>
       </StyledButtonGroup>
     </div>
   )

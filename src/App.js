@@ -10,8 +10,11 @@ import { EmployeeProvider } from "./EmployeeContext";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./theming/global";
 import { theme } from "./theming/theme";
-import AddEmployee from "./Components/AddEmployee/AddEmployee";
+import { AddEmployee } from "./Components/AddEmployee/AddEmployee";
 import { Login } from "./Components/Login/Login";
+import { Register } from "./Components/Register/Register";
+import { EmployeeDetail } from "./Components/EmployeeDetail/EmployeeDetail";
+import { EmployeeListItem } from "./Components/EmployeeListItem/EmployeeListItem";
 
 const App = () => {
   return (
@@ -51,6 +54,14 @@ const App = () => {
             element={
               <Wrapper>
                 <Login />
+              </Wrapper>
+            }
+          />{" "}
+          <Route
+            path="/register"
+            element={
+              <Wrapper>
+                <Register />
               </Wrapper>
             }
           />{" "}

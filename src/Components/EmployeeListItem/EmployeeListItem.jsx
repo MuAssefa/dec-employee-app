@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import { Link } from 'react-router-dom'; 
 import {EmployeeContext} from '../../EmployeeContext'
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
@@ -8,10 +9,12 @@ function EmployeeListItem() {
   const { employees,color } = useContext(EmployeeContext);
   return (
        <React.Fragment>
-         {employees.map(({image, name, occupation, cellOffice, cellMobile, sms, email}, index) =>{
+         {employees.map(({image, name, occupation, cellOffice, cellMobile, sms, email}, index) => 
+          {
            return(
-        
-            <StyledEmployeeListItem   key={index} elevation='6'>
+            <Link key={index} to={`/employees/${index}`}>
+
+            <StyledEmployeeListItem    elevation='6'>
              <img style={StyledImage}src={image} alt="person"/>
               <div>
               <h4 style={{color: color}}>{name}</h4>
@@ -22,6 +25,8 @@ function EmployeeListItem() {
                <p>{email}</p>
                </div>
                </StyledEmployeeListItem>
+               </Link>
+
     );
 })}
 

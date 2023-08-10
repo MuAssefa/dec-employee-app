@@ -9,7 +9,7 @@ function Wrapper(props) {
         maxWidth: "1200px",
         height: "90vh",
         margin: "5rem auto",
-        padding: "3rem 0rem",
+        padding: "3rem",
       }}
     >
       {props.children}

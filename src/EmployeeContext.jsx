@@ -1,5 +1,7 @@
 import  {useState,createContext } from "react";
+// import {EmployeeDetail} from "./Components/EmployeeDetail/EmployeeDetail";
 // import AddEmployee from "./Components/AddEmployee/AddEmployee";
+
 
 // Create the context
  export const EmployeeContext =  createContext();

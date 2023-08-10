@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
   export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
+        navigate ("/employee-list");
     }
 
     return (
@@ -21,7 +24,7 @@ import React, { useState } from "react";
                  placeholder="********" id="password" name="password" />
                 <button type="submit">Log In</button>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an 
+            <button className="link-btn" onClick={() => navigate("/register")}>Don't have an 
              account? Register here.</button>
         </div>
     )
