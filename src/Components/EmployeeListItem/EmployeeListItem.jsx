@@ -1,21 +1,28 @@
 import React,{useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'; 
 import {EmployeeContext} from '../../EmployeeContext'
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
 
 
-function EmployeeListItem() {
+function EmployeeListItem({ imageUrl, name, index }) {
   const { employees,color } = useContext(EmployeeContext);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/employee/${index}`); 
+  };
+
   return (
-       <React.Fragment>
-         {employees.map(({image, name, occupation, cellOffice, cellMobile, sms, email}, index) => 
+      <React.Fragment>
+      {employees.map(({imageUrl, name, occupation, cellOffice, cellMobile, sms, email}, index) => 
           {
            return(
-            <Link key={index} to={`/employees/${index}`}>
-
-            <StyledEmployeeListItem    elevation='6'>
-             <img style={StyledImage}src={image} alt="person"/>
+            <Link  to={`/employees/${index}`}>
+            <StyledEmployeeListItem  onClick={handleClick}   key={index} elevation='6'>
+             <img style={StyledImage}src={imageUrl} alt="person"/>
               <div>
               <h4 style={{color: color}}>{name}</h4>
                <p>{occupation}</p>
@@ -25,7 +32,7 @@ function EmployeeListItem() {
                <p>{email}</p>
                </div>
                </StyledEmployeeListItem>
-               </Link>
+                </Link>
 
     );
 })}
