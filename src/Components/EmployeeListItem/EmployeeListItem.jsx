@@ -17,6 +17,7 @@ function EmployeeListItem({ imageUrl, name, index }) {
 
   return (
       <React.Fragment>
+        
       {employees.map(({imageUrl, name, occupation, cellOffice, cellMobile, sms, email}, index) => 
           {
            return(

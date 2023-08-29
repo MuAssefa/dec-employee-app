@@ -10,6 +10,8 @@ import "./Register.css";
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
+        navigate ("/employee-list");
+
     }
 
     return (
