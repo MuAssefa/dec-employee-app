@@ -1,5 +1,6 @@
 import  {useState,createContext, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // Create the context
  export const EmployeeContext =  createContext();
@@ -8,6 +9,7 @@ import axios from "axios";
 // Create a provider component
  export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([]);
+    const navigate = useNavigate()
 
     const requestUrl = 
     "https://still-anchorage-76866-40e48e0fa874.herokuapp.com/api/employees/employees";
@@ -22,10 +24,11 @@ import axios from "axios";
     async function fetchEmployees() {
       try {
         const response = await axios.get(requestUrl);
-        // console.log("response", response)
         setEmployees(response.data)
+        
+
       } catch (error) {
-        console.error(error);
+        console.error(error); 
       }
     }
 
@@ -40,9 +43,9 @@ import axios from "axios";
     };
      const color = "green";
     return (
-      <EmployeeContext.Provider value={{ employees, setEmployees,handleWelcome,color }}>
+ <EmployeeContext.Provider value={{ employees, setEmployees,handleWelcome, fetchEmployees,color }}>
         {props.children}
-      </EmployeeContext.Provider>
+  </EmployeeContext.Provider>
     );
   };
   

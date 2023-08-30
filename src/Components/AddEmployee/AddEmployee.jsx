@@ -1,10 +1,11 @@
-import  { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import  { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { EmployeeContext } from '../../EmployeeContext';
 import './AddEmployee.css'; 
 import axios from 'axios';
 
   const AddEmployee = () => {
+  const { fetchEmployees } = useContext(EmployeeContext);//add new fetchEmployees from employeeC
   const { employees, setEmployees } = useContext(EmployeeContext);
   const [employee, setEmployee] = useState({
     name: '',
@@ -16,7 +17,20 @@ import axios from 'axios';
     imageUrl: '',
   });
 
+  const {id} = useParams() // Extracting the employee Id from URL if present
   const navigate = useNavigate();
+
+  useEffect( () => {
+if(id) {
+  axios.get(`https://still-anchorage-76866-40e48e0fa874.herokuapp.com/api/employees/${id}`
+  ).then(response => {setEmployee(response.data)
+  }).catch( (error) => {
+    console.error("failed to fetch employee data: ", error)
+  })
+}
+
+  // axios.get(`https://still-anchorage-76866-40e48e0fa874.herokuapp.com/api/employees/${id}`)
+  },[id])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,8 +52,27 @@ import axios from 'axios';
       }
     }
 
+    async function EditEmployee() {
+      try{
+  const response = axios
+  .put(`https://still-anchorage-76866-40e48e0fa874.herokuapp.com/api/employees/${id}`,setEmployee)
+  console.log("edit response", response)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(id){
+      EditEmployee()
+      fetchEmployees()
+      navigate("/employee-list")
+    }else {
+      AddEmployee()
+      fetchEmployees()
+      setTimeout( () => {navigate("/employee-list")},3000)
+    }
     AddEmployee()
     setEmployees( [...employees, employee]) ;
     setEmployee({
@@ -105,7 +138,7 @@ import axios from 'axios';
           name="imageUrl"
            value={employee.imageUrl} 
            onChange={handleChange} />
-        <button type="submit">Add Employee</button>
+        <button type="submit">{id ? "Edit": "Submit"}</button>
         <button type="button" onClick={() => navigate.push('/')}>
           Cancel
         </button>

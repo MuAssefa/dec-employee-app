@@ -40,6 +40,14 @@ const App = () => {
               </Wrapper>
             }
           />
+          <Route
+            path="/add-employee/:id"
+            element={
+              <Wrapper>
+                <AddEmployeePage />
+              </Wrapper>
+            }
+          />
           {/* localhost:3000/add-employee */}
           <Route
             path="/employee-list"
