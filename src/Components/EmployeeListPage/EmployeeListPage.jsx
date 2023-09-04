@@ -5,6 +5,7 @@ import EmployeeList from "../EmployeeList/EmployeeList";
 function EmployeeListPage() {
   return (
     <>
+    
       <EmployeeList />
     </>
   );

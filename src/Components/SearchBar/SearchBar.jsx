@@ -1,48 +1,62 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const StyledInput = styled.input`
-  width: 90%;
-  padding: 10px 5px;
-  border: none;
-  border: 1px solid #333;
-  border-radius: 6px;
-  margin: 4px;
+const SearchContainer = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
 `;
 
-const SearchBar = ({ employeesData, setEmployeesData, originalEmployeesData }) => {
-  const [searchItem, setSearchItem] = useState("");
+const SearchInput = styled.input`
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 4px;
+`;
 
-  const handleChange = (event) => {
-    setSearchItem(event.target.value);
+const SearchButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+`;
+
+const SearchBar = ({ employeesData, setEmployeesData }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
   const handleSearch = () => {
-    const searchResult = employeesData.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(searchItem.toLowerCase()) ||
-        item.title.toLowerCase().includes(searchItem.toLowerCase())
-      );
-    });
-
+    const searchResult = employeesData.filter(
+      (employee) =>
+        employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        employee.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     setEmployeesData(searchResult);
   };
 
-  const handleClear = () => {
-    setSearchItem(""); // Clear the search input
-    setEmployeesData(originalEmployeesData); // Reset to the original employee data
-  };
-
   return (
-    <>
-      <StyledInput type='text' name='' id='' value={searchItem} onChange={handleChange} />
-      <FontAwesomeIcon icon={faSearch} size='lg' onClick={handleSearch} />
-      <button onClick={handleClear}>Clear</button>
-    </>
+    <SearchContainer>
+      <SearchInput
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+      />
+      <SearchButton onClick={handleSearch}>
+        <FontAwesomeIcon icon={faSearch} />
+      </SearchButton>
+    </SearchContainer>
   );
 };
 
 export default SearchBar;
-

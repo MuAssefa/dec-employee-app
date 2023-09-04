@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {EmployeeContext} from '../../EmployeeContext'
 import styled from 'styled-components';
 import Paper from '@mui/material/Paper';
@@ -7,6 +7,9 @@ import Alert from "@mui/material/Alert"
 import { Delete,Edit } from '@mui/icons-material';
 import axios from 'axios';
 import  {Link}  from 'react-router-dom'; 
+import SearchBar from '../SearchBar/SearchBar';
+import EmployeeDetail from '../EmployeeDetail/EmployeeDetail';
+
 
 
 
@@ -55,7 +58,11 @@ function EmployeeListItem({ imageUrl, name, index }) {
 
 
   return (
+    
       <React.Fragment>
+        <h2>Employee Directory</h2>
+        < SearchBar />
+        <EmployeeDetail />
     {showAlert && (<Alert severity="error">Employee is deleted successfully!</Alert>)}    
 {employees.map(({imageUrl, name, occupation, cellOffice, cellMobile, sms, email, _id}, index) => 
           {
@@ -66,10 +73,10 @@ function EmployeeListItem({ imageUrl, name, index }) {
               <div>
               <h4 style={{color: color}}>{name}</h4>
                <p>{occupation}</p>
-               <p>{cellOffice}</p>
+               {/* <p>{cellOffice}</p>
                <p>{cellMobile}</p>
                <p>{sms}</p>
-               <p>{email}</p>
+               <p>{email}</p> */}
                </div>
                <div>
                 <Link to={`/add-employee/${_id}`}>

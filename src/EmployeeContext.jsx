@@ -1,6 +1,6 @@
 import  {useState,createContext, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 // Create the context
  export const EmployeeContext =  createContext();
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // Create a provider component
  export const EmployeeProvider = (props) => {
     const [employees, setEmployees] = useState([]);
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const requestUrl = 
     "https://still-anchorage-76866-40e48e0fa874.herokuapp.com/api/employees/employees";
