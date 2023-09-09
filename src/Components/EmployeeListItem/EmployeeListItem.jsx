@@ -50,7 +50,7 @@ function EmployeeListItem({ imageUrl, name, index }) {
       console.log("failed to delete employee: ", error)
     })
   }
-  console.log("alert", showAlert)
+  // console.log("alert", showAlert)
 
   const handleEdit = (employeeId) => {
     console.log("employee id", employeeId)

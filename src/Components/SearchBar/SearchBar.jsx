@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {EmployeeContext} from '../../EmployeeContext'
 
 const SearchContainer = styled.div`
   width: 50%;
@@ -28,20 +29,25 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-const SearchBar = ({ employeesData, setEmployeesData }) => {
+const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const{employees,setEmployees} = useContext(EmployeeContext) 
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const handleSearch = () => {
-    const searchResult = employeesData.filter(
+    console.log("Search query:", searchQuery);
+    console.log("employee data:", employees );
+
+    const searchResult = employees.filter(
       (employee) =>
         employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        employee.title.toLowerCase().includes(searchQuery.toLowerCase())
+        employee.occupation.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setEmployeesData(searchResult);
+    // console.log("Search result:", searchResult);
+    setEmployees(searchResult);
   };
 
   return (
@@ -60,3 +66,16 @@ const SearchBar = ({ employeesData, setEmployeesData }) => {
 };
 
 export default SearchBar;
+
+
+
+
+
+
+
+
+
+
+
+
+  

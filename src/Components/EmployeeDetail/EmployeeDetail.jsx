@@ -1,62 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { EmployeeContext } from '../../EmployeeContext';
+
+const StyledEmployeeDetail = styled.div`
+  background-color: #f5f5f5;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 16px;
+  
+`;
 
 function EmployeeDetail() {
-  const { employeeIndex } = useParams();
-  const [employee, setEmployee] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const { employees } = useContext(EmployeeContext);
 
-  useEffect(() => {
-    const fetchEmployeeData = async () => {
-      try {
-        const response = await axios
-        .get(`https://still-anchorage-76866- 
-         40e48e0fa874.herokuapp.com/api/employees/${employeeIndex}`);
-
-        setEmployee(response.data);
-
-        setLoading(false);
-      } catch (error) {
-        setError('Error fetching employee data');
-        setLoading(false);
-      }
-    };
-    
-    if (employeeIndex !== undefined) {
-      fetchEmployeeData();
-    }
-  }, [employeeIndex]);
+  const selectedEmployee = employees[0]; 
 
   return (
-    <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          {error ? (
-            <div>{error}</div>
-          ) : (
-            <div>
-              <h2>Employee Detail</h2>
-              <div>
-                <img src={employee.imageUrl} alt="person"  />
-                <div>
-                  <h4>{employee.name}</h4>
-                  <p>Occupation: {employee.occupation}</p>
-                  <p>Cell Office: {employee.cellOffice}</p>
-                  <p>Cell Mobile: {employee.cellMobile}</p>
-                  <p>SMS: {employee.sms}</p>
-                  <p>Email: {employee.email}</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+    <StyledEmployeeDetail>
+      {selectedEmployee && (
+        <>
+          <h2>Employee Detail</h2>
+          <img
+            src={selectedEmployee.imageUrl}
+            alt={selectedEmployee.name}
+            style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+          />
+          <h3>{selectedEmployee.name}</h3>
+          <p>Occupation: {selectedEmployee.occupation}</p>
+          <p>Office Cell: {selectedEmployee.cellOffice}</p>
+          <p>Mobile Cell: {selectedEmployee.cellMobile}</p>
+          <p>SMS: {selectedEmployee.sms}</p>
+          <p>Email: {selectedEmployee.email}</p>
+        </>
       )}
-    </div>
+    </StyledEmployeeDetail>
   );
 }
 
 export default EmployeeDetail;
+
+
+
