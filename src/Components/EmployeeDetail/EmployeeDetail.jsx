@@ -28,8 +28,8 @@ function EmployeeDetail() {
           />
           <h3>{selectedEmployee.name}</h3>
           <p>Occupation: {selectedEmployee.occupation}</p>
-          <p>Office Cell: {selectedEmployee.cellOffice}</p>
-          <p>Mobile Cell: {selectedEmployee.cellMobile}</p>
+          <p> Cell Office : {selectedEmployee.cellOffice}</p>
+          <p> Cell Mobile : {selectedEmployee.cellMobile}</p>
           <p>SMS: {selectedEmployee.sms}</p>
           <p>Email: {selectedEmployee.email}</p>
         </>
